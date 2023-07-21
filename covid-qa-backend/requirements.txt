@@ -1,0 +1,5 @@
+Flask
+flask-cors
+gunicorn==20.0.4
+futures
+farm-haystack[preprocessing,elasticsearch,inference]

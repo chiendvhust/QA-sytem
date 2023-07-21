@@ -1,0 +1,12 @@
+version: "2"
+services:
+  covid-qa-frontend:
+    container_name: covid-qa-frontend-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_BASE_URL: http://test.com
+    ports:
+      - "8081:80"
+

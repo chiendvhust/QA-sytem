@@ -1,0 +1,45 @@
+version: "3.9"
+services:
+  covid-qa-backend:
+    container_name: covid-qa-backend-container
+    build:
+      context: ./covid-qa-backend
+      dockerfile: Dockerfile
+    image: covid-qa-be
+    ports:
+      - "8777:8777"
+    volumes:
+      - ./app-data:/app-data
+    environment:
+      APP_ENV: production
+      ELASTICSEARCH_HOST: elasticsearch:9200
+      PORT: 8777
+    networks:
+      app-network:
+        aliases:
+          - web
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+    networks:
+      app-network:
+        aliases:
+          - elasticsearch
+  covid-qa-frontend:
+    container_name: covid-qa-frontend-container
+    build:
+      context: ./covid-qa-frontend
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_BASE_URL: http://10.4.21.99:8777
+    image: covid-qa-fe
+    ports:
+      - "8081:80"
+
+networks:
+  app-network:
+    driver: bridge
