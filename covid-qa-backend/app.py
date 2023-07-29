@@ -59,7 +59,7 @@ with open(filename) as f:
 dataDocuments = convertToDocument(dataBase)
 document_store.write_documents(dataDocuments, document_index)
 retriever = BM25Retriever(document_store)
-ranker = SentenceTransformersRanker(model_name_or_path="cross-encoder/ms-marco-MiniLM-L-12-v2")
+ranker = SentenceTransformersRanker(model_name_or_path="chiendvhust/cross-encoder-distilroberta-base")
 reader = FARMReader(model_name_or_path="chiendvhust/biobert_v1.1_pubmed_squad_v2-finetuned-covidQA",
                     use_gpu=True,
                     max_seq_len=512,
@@ -68,6 +68,7 @@ reader = FARMReader(model_name_or_path="chiendvhust/biobert_v1.1_pubmed_squad_v2
                     return_no_answer=True)
 top_k = 10
 
+print("running succesfully")
 
 # host = os.environ.get("ELASTICSEARCH_HOST", "localhost")
 
@@ -91,7 +92,6 @@ def qa():
     return jsonify(jsonFormat)
 
 
-print("running succesfully")
 
 
 @app.errorhandler(500)

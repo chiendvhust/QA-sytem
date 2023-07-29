@@ -48,4 +48,4 @@ EXPOSE $PORT
 VOLUME ["/app-data"]
 
 # Running Python Application
-CMD gunicorn -b :$PORT app:app --timeout 600
+CMD gunicorn -b :$PORT app:app --timeout 600 --workers 1

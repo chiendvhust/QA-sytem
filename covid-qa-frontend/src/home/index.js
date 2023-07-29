@@ -48,7 +48,7 @@ const Home = () => {
         <div className="home">
             <header className="home-header">
                 <img src={logo} className="home-logo" alt="logo"/>
-                <h1 className="home-title">Welcome to Covid Q&A Recommendation System</h1>
+                <h1 className="home-title">Welcome to Covid Q&A</h1>
             </header>
             {landing &&
                 <div className='home-main'>
