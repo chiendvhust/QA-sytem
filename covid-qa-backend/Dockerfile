@@ -30,10 +30,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copying src code to Container
 COPY . /usr/src/app
 
-#RUN chmod -R 777 /usr/src/app/data/input
-#RUN chmod -R 777 /usr/src/app/data/squad20
-#RUN chmod -R 777 /usr/src/app/data/train_model
-#RUN chmod -R 777 /usr/src/app/data
 RUN chmod -R 777 /usr/src/app
 RUN chmod -R 777 /usr/src
 
