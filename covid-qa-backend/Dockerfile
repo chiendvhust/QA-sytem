@@ -32,6 +32,7 @@ COPY . /usr/src/app
 
 RUN chmod -R 777 /usr/src/app
 RUN chmod -R 777 /usr/src
+RUN python3 -c "from docker import cache_models;cache_models()"
 
 # Application Environment variables
 #ENV APP_ENV development
